@@ -330,7 +330,8 @@ class Download:
                             logger=None,
                             temp_audiofile='/tmp/Audio.mp3',
                             remove_temp=True,
-                            threads=20
+                            threads=4,
+                            ffmpeg_params =['-f', 'mp4']
                         )
                     else:
                         clip.write_videofile(
