@@ -326,13 +326,21 @@ class Download:
                         print(f'clip.write_videofile done to {file}')
                         clip.write_videofile(
                             file,
-                            verbose=self.verbose
+                            verbose=self.verbose,
+                            codec="libx264", audio_codec="aac", logger=None, fps=24
+                        )
+
+                        clip.write_videofile(
+                            file,
+                            verbose=self.verbose,
+                            codec="libx264", audio_codec="aac", logger=None, fps=24
                         )
                     else:
                         clip.write_videofile(
                             self.output + ".mp4", verbose=self.verbose, logger=None
                         )
                 except Exception as e:
+                    print(e)
                     pass
                 print("Merging Done!")
                 # self.CleanUp()
