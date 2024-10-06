@@ -244,7 +244,7 @@ class Download:
             self.Logger.LogInfo(
                 "Sorry there was an error while fetching video/audio files"
             )
-            self.Logger.LogInfo("\nTraceback:\n" + e)
+            print(e)
         else:
             self.MergeVideo()
 
