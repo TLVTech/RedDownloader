@@ -330,7 +330,7 @@ class Download:
                             logger=None,
                             temp_audiofile='/tmp/Audio.mp3',
                             remove_temp=True,
-                            threads=100
+                            threads=20
                         )
                     else:
                         clip.write_videofile(
