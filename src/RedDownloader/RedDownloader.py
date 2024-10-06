@@ -162,7 +162,7 @@ class Download:
                 if self.destination == None:
                     self.directory = self.output
                 else:
-                    self.directory = os.path.join(self.destination, self.output)
+                    self.directory = os.path.abspath(os.path.join(self.destination, self.output))
                 try:
                     # making a directory for the gallery
                     os.mkdir(self.directory)
@@ -228,7 +228,7 @@ class Download:
             self.Logger.LogInfo(f"Downloading image {i+1} / {TotalPosts}")
             ImageData = requests.get(posts[i]).content
             with open(
-                os.path.join(self.directory, self.output + f"{i+1}.jpeg"), "wb"
+                os.path.abspath(os.path.join(self.directory, self.output + f"{i+1}.jpeg")), "wb"
             ) as image:
                 image.write(ImageData)
                 image.close()
@@ -507,7 +507,7 @@ class DownloadBySubreddit:
         path = ""
         try:
             if destination is not None:
-                path = os.path.join(destination, output)
+                path = os.path.abspath(os.path.join(destination, output))
                 os.mkdir(path)
             else:
                 os.mkdir(output)
@@ -674,7 +674,7 @@ class DownloadImagesBySubreddit:
         path = ""
         try:
             if destination is not None:
-                path = os.path.join(destination, output)
+                path = os.path.abspath(os.path.join(destination, output))
                 os.mkdir(path)
             else:
                 os.mkdir(output)
@@ -842,7 +842,7 @@ class DownloadVideosBySubreddit:
         path = ""
         try:
             if destination is not None:
-                path = os.path.join(destination, output)
+                path = os.path.abspath(os.path.join(destination, output))
                 os.mkdir(path)
             else:
                 os.mkdir(output)
@@ -1009,7 +1009,7 @@ class DownloadGalleriesBySubreddit:
         path = ""
         try:
             if destination is not None:
-                path = os.path.join(destination, output)
+                path = os.path.abspath(os.path.join(destination, output))
                 os.mkdir(path)
             else:
                 os.mkdir(output)
@@ -1233,12 +1233,12 @@ class GetPostAudio:
             self.Logger.LogInfo("Downloading Audio...")
             if self.destination is not None:
                 if not output:
-                    with open(os.path.join(self.destination, "Audio.mp3"), "wb") as f:
+                    with open(os.path.abspath(os.path.join(self.destination, "Audio.mp3")), "wb") as f:
                         f.write(doc.content)
                         f.close()
                 else:
                     with open(
-                        os.path.join(self.destination, f"{output}.mp3"), "wb"
+                        os.path.abspath(os.path.join(self.destination, f"{output}.mp3")), "wb"
                     ) as f:
                         f.write(doc.content)
                         f.close()
