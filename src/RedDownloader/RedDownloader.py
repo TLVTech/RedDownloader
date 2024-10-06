@@ -327,13 +327,10 @@ class Download:
                         clip.write_videofile(
                             file,
                             verbose=self.verbose,
-                            codec="libx264", audio_codec="aac", logger=None, fps=24
-                        )
-
-                        clip.write_videofile(
-                            file,
-                            verbose=self.verbose,
-                            codec="libx264", audio_codec="aac", logger=None, fps=24
+                            logger=None,
+                            temp_audiofile='/tmp/Audio.mp3',
+                            remove_temp=True,
+                            threads=1
                         )
                     else:
                         clip.write_videofile(
