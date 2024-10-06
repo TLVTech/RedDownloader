@@ -95,7 +95,7 @@ class Download:
     """
 
     def __init__(
-        self, url, quality=1080, output="downloaded", destination=None, verbose=True
+        self, url, quality=1080, output="downloaded", destination=None, verbose=True, threads=4
     ):
         self.output = output
         self.MainURL = url
@@ -103,6 +103,7 @@ class Download:
         qualityTypes = [144, 240, 360, 480, 720, 1080]
         self.verbose = verbose
         self.Logger = Logger(self.verbose)
+        self.threads = threads
         if quality not in qualityTypes:  # if quality is not in the list
             raise Exception(
                 "Error: Unkown Quality Type"
@@ -330,7 +331,7 @@ class Download:
                             logger=None,
                             temp_audiofile='/tmp/Audio.mp3',
                             remove_temp=True,
-                            threads=4,
+                            threads=self.threads,
                             ffmpeg_params =['-f', 'mp4']
                         )
                     else:
