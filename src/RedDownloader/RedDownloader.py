@@ -322,8 +322,10 @@ class Download:
                 clip.audio = new_audioclip
                 try:
                     if self.destination is not None:
+                        file = self.destination + self.output + ".mp4"
+                        print(f'clip.write_videofile done to {file}')
                         clip.write_videofile(
-                            self.destination + self.output + ".mp4",
+                            file,
                             verbose=self.verbose,
                             logger=None,
                         )
@@ -334,7 +336,7 @@ class Download:
                 except Exception as e:
                     pass
                 print("Merging Done!")
-                self.CleanUp()
+                # self.CleanUp()
                 print(self.output + " Successfully Downloaded!")
                 clip.close()
             except Exception as e:
