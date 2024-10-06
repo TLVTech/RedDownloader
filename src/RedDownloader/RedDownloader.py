@@ -326,8 +326,7 @@ class Download:
                         print(f'clip.write_videofile done to {file}')
                         clip.write_videofile(
                             file,
-                            verbose=self.verbose,
-                            logger=None,
+                            verbose=self.verbose
                         )
                     else:
                         clip.write_videofile(
