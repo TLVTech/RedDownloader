@@ -332,7 +332,9 @@ class Download:
                             temp_audiofile='/tmp/Audio.mp3',
                             remove_temp=True,
                             threads=self.threads,
-                            ffmpeg_params =['-f', 'mp4']
+                            ffmpeg_params =['-f', 'mp4'],
+                            preset="ultrafast", 
+                            fps=30
                         )
                     else:
                         clip.write_videofile(
